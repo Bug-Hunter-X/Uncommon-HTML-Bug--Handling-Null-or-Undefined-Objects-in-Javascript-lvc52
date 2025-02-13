@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug Solution</title>
+</head>
+<body>
+  <div id="myDiv" data-myattribute="My Attribute Value">
+    This is some text.
+  </div>
+
+  <script>
+    //Properly access attributes. Null check is not needed as getAttribute returns null if the attribute doesn't exist.
+    let myText = document.getElementById("myDiv").getAttribute("data-myattribute");
+    console.log(myText); // Output: My Attribute Value
+
+    //Handle potential null values gracefully
+    let myAttribute = document.getElementById("myDiv").getAttribute("data-nonexistent");
+    let upperCaseText = (myAttribute !== null) ? myAttribute.toUpperCase() : "Attribute not found";
+    console.log(upperCaseText); // Output: Attribute not found
+
+    //Check if an element exists before accessing it
+    let nonExistentElement = document.getElementById('nonExistent');
+    if(nonExistentElement){
+        console.log(nonExistentElement.textContent);
+    } else {
+        console.error("Element does not exist");
+    }
+  </script>
+</body>
+</html>
