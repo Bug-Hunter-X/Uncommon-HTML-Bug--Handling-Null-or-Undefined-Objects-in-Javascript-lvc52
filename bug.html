@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug</title>
+</head>
+<body>
+  <div id="myDiv">
+    This is some text.
+  </div>
+
+  <script>
+    //Attempt to access a non-existent attribute
+    let myText = document.getElementById("myDiv").getAttribute("data-nonexistent");
+    console.log(myText); // Output: null
+
+    //Attempt to use a method on a null value 
+    if(myText !== null){      
+      console.log(myText.toUpperCase()); // Throws an error because myText is null
+    }
+
+    //Trying to access an element that doesn't exist
+    let nonExistentElement = document.getElementById('nonExistent');
+    if(nonExistentElement){
+        console.log(nonExistentElement.textContent);
+    } else {
+        console.error("Element does not exist");
+    }
+
+  </script>
+</body>
+</html>
